@@ -17,9 +17,8 @@ async function init() {
     await loadAddTask();
     renderColumns();
     loadContactsToAssigned();
-
-    setupDragAreas(); // Drag-Bereiche direkt initialisieren
-    // Entfernen Sie den Aufruf von initDragAndDrop()
+    
+    setupDragAreas(); // Already initializing drag areas here
 };
 
 /**
@@ -58,6 +57,7 @@ function renderAllTaskCards(allTasks, state, id) {
     todos.forEach((task) => {
         id.innerHTML += getTaskCard(task);
     });
+}
 
 function startDragging(event, taskId) {
     const draggedElement = event.target.closest('.task_card');
@@ -172,7 +172,6 @@ function setupDragAreas() {
 }
 
 async function moveTo(taskId, targetStatus) {
-    // Finde die Task im allTasks Array
     const taskIndex = allTasks.findIndex(task => task.id === taskId);
     if (taskIndex === -1) return;
 

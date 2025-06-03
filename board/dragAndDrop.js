@@ -12,7 +12,7 @@ function allowDrop(event) {
         const placeholder = createPlaceholder(dimensions);
         dropzone.appendChild(placeholder);
     }
-};
+}
 
 function startDragging(event, taskId) {
     const draggedElement = event.target.closest('.task_card');
@@ -106,22 +106,18 @@ function setupDragAreas() {
     document.addEventListener('dragend', handleDragEnd);
 }
 
-// Diese Funktion in init() aufrufen
-async function init() {
-    renderContent();
-    updateUserProfile();
-    await loadContactData();
-    await loadAddTask();
-    renderColumns();
-    loadContactsToAssigned();
-    setupDragAreas(); // Drag-Bereiche initialisieren
-}
-
 // Diese Funktion sollte in board.js aufgerufen werden
-function initDragAndDrop() {
-    setupDragAreas(); // Drag-Bereiche initialisieren
-    return Promise.resolve(); // Damit die Funktion ein Promise zurückgibt und await funktioniert
-}
+// async function init() {
+//     renderSidebar();
+//     renderContent();
+//     updateUserProfile();
+//     await loadContactData();
+//     await loadAddTask();
+//     renderColumns();
+//     loadContactsToAssigned();
+//     
+//     setupDragAreas(); // Already initializing drag areas here
+// }
 
 function createPlaceholder(dimensions) {
     const placeholder = document.createElement('div');
